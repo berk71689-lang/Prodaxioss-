@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ece ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 10% 20%, #ff0055, transparent 30%),
+        radial-gradient(circle at 90% 20%, #7c3aed, transparent 30%),
+        radial-gradient(circle at 20% 90%, #ff8a00, transparent 30%),
+        radial-gradient(circle at 90% 90%, #00d9ff, transparent 30%),
+        linear-gradient(135deg, #ff1493, #8a2be2, #00bfff);
+
+    background-attachment: fixed;
+}
+
+/* Giriş ekranı */
+#login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-box,
+.poem-box {
+    width: min(90%, 600px);
+    padding: 35px;
+    text-align: center;
+    border-radius: 30px;
+
+    background: rgba(0,0,0,.3);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.login-box h1 {
+    font-size: 45px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    margin-top: 18px;
+    background: #ff174f;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff174f;
+}
+
+#error {
+    color: #ffd1dc;
+}
+
+/* Ana sayfa */
+#main {
+    display: none;
+    min-height: 100vh;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#main h1 {
+    font-size: 75px;
+    text-shadow: 0 0 30px #ff1493;
+}
+
+.poem-box {
+    margin: 40px auto;
+}
+
+.poem {
+    font-size: 20px;
+    line-height: 2;
+    font-style: italic;
+    color: #ffe6ef;
+}
+
+/* Kalpler */
+.heart,
+.milk {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.heart {
+    bottom: -50px;
+    animation: up 5s linear forwards;
+}
+
+.milk {
+    top: -50px;
+    animation: down 4s linear forwards;
+}
+
+@keyframes up {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes down {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 ŞİFRE EKRANI -->
+<div id="login">
+
+    <div class="login-box">
+
+        <div style="font-size:70px;">❤️</div>
+
+        <h1>Ece'ye Özel</h1>
+
+        <p>Bu küçük dünya sadece sana ait 💗</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Şifreyi gir ❤️"
+        >
+
+        <br>
+
+        <button onclick="giris()">
+            Giriş Yap ❤️
+        </button>
+
+        <p id="error"></p>
+
+    </div>
+
+</div>
+
+
+<!-- 💗 ANA SAYFA -->
+<div id="main">
+
+    <h1>Ece ❤️</h1>
+
+    <p>
+        İyi ki varsın.
+    </p>
+
+    <div class="poem-box">
+
+        <h2>💌 Ece'ye</h2>
+
+        <div class="poem">
+
+            Bir gülüşün yeter, aydınlanır gecem,<br>
+            Kalbimde saklı en güzel hecem.<br>
+            Yıldızlar kıskanır gözlerindeki ışığı,<br>
+            İyi ki hayatımdasın güzel Ece'm. ❤️<br><br>
+
+            Dünya dönsün, zaman aksın,<br>
+            Bu güzel an hiç bitmesin.<br>
+            Her kalp atışında bir dilek varsa,<br>
+            Dileğim hep sen ol, Ece. 💗
+
+        </div>
+
+    </div>
+
+    <button onclick="kalpYagdir()">
+        ❤️ Kalpleri Yağdır
+    </button>
+
+</div>
+
+
+<script>
+
+/* 🔐 ŞİFRE */
+function giris() {
+
+    const sifre =
+        document.getElementById("password").value;
+
+    if (sifre === "12345") {
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("main").style.display = "block";
+
+        kalpYagdir();
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Şifre yanlış 😭❤️";
+
+    }
+}
+
+
+/* Enter ile giriş */
+document.getElementById("password").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            giris();
+        }
+
+    }
+);
+
+
+/* ❤️ Kalp yağmuru */
+function kalpYagdir() {
+
+    setInterval(() => {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className = "heart";
+
+        const hearts = [
+            "❤️",
+            "💗",
+            "💖",
+            "💕",
+            "💘",
+            "💝"
+        ];
+
+        heart.innerText =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            20 + Math.random() * 35 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+
+    }, 300);
+}
+
+
+/* 🍫🥛 Çikolatalı süt yağmuru */
+setInterval(() => {
+
+    const milk =
+        document.createElement("div");
+
+    milk.className = "milk";
+
+    const items = [
+        "🥛",
+        "🍫",
+        "🥛",
+        "🍫",
+        "🤎"
+    ];
+
+    milk.innerText =
+        items[Math.floor(Math.random() * items.length)];
+
+    milk.style.left =
+        Math.random() * 100 + "vw";
+
+    milk.style.fontSize =
+        20 + Math.random() * 25 + "px";
+
+    document.body.appendChild(milk);
+
+    setTimeout(() => milk.remove(), 6000);
+
+}, 400);
+
+</script>
+
+</body>
+</html>
